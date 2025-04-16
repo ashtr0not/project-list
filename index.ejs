@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/index.css">
+    </head>
+    <body>
+        <h1>Project List: </h1>
+
+        <form action="addProject" method="POST">
+            <input type="text" placeholder="Project" name="projectName">
+            <textarea name="projectDescription" id="" cols="30" rows="5" ></textarea>
+            <input type="text" placeholder="link" name="projectLink">
+            <input type="submit" value="Add Project">
+        </form>
+
+        <ul class="projectItems">
+            <% for(let i = 0; i < project.length; i++){ %>
+                <li class="item">
+                    <% if(project[i].complete === true){ %>
+                        <span class="completed"><%= project[i].projectName %></span>
+                    <% }else{ %>
+                        <span><%= project[i].projectName %> : </span>
+                        <span><%= project[i].projectDescription %> </span>
+                        <span><%= project[i].projectLink  %></span>
+                    <% } %>   
+                </li>
+            <% } %> 
+
+        </ul>
+
+        
+        <script src="/js/main.js" async defer></script>
+    </body>
+</html>
