@@ -1,14 +1,19 @@
 html{
-    font: 1.2rem "Fira Sans",sans-serif;
+    font: small-caps lighter 24px/1 sans-serif;
 }
 
 h1{
+    background-color: black;
+    color: white;
     text-align:center;
     border-width: 1px;
     border-style: solid;
-    border-radius: 50%;
+    /* border-radius: 0%; */
     /* margin: 10px; */
     padding: 20px;
+    margin-top: -10px;
+    margin: -10px -20px 20px -20px; 
+    font: small-caps lighter 24px/1 sans-serif;
 }
 
 form{
@@ -28,4 +33,5 @@ li{
 
 ul{
     list-style-type: none;
+    margin: 30px -40px 20px -30px; 
 }

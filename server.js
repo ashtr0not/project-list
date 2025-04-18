@@ -38,12 +38,23 @@ app.post('/addProject', (request,response) => {
     db.collection('projects').insertOne({projectName: request.body.projectName, projectDescription: request.body.projectDescription, complete: false, projectLink: request.body.projectLink })
     .then(result => {
         console.log('Project Added')
-        response.redirect('/')
+        response.redirect('/') 
     })
 })
 //PUT Request
+app.put('/editProject', (request,response) => {
+    db.collection('projects').updateOne({})
+})
 
 //DELETE Request 
+app.delete('/deleteProject', (request,response) => {
+    db.collection('projects').deleteOne({projectName: request.body.projectName})
+    .then(result => {
+        console.log('Project Deleted')
+        response.json('Project Deleted')
+    })
+    .catch(error => console.error(error))
+})
 
 //Setting up app to listen on port 7777
 app.listen(process.env.PORT || PORT, ()=> {
