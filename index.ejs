@@ -16,22 +16,24 @@
         <h1>Project List: </h1>
 
         <form action="addProject" method="POST">
+            <span class="formSpan"><label for="projectName">Project Name: </label></span>
             <input type="text" placeholder="Project" name="projectName">
-            <textarea name="projectDescription" id="" cols="30" rows="5" ></textarea>
-            <input type="text" placeholder="link" name="projectLink">
-            <input type="submit" value="Add Project">
-        </form>
 
+            <span class="formSpan"><label for="projectDescription">Description: </label></span>
+            <textarea name="projectDescription" id="" cols="30" rows="5" ></textarea>
+
+            <span class="formSpan"><label for="projectDescription">Project Link: </label></span>
+            <span class="formSpan"><input type="text" placeholder="" name="projectLink"></span>
+            <input id="add" type="submit" value="Add Project">
+        </form>
+        <!-- YOU ARE ADDING CLASSES TO THE SPAN TO STOP THE PROJECTNAME DUPLICATING -->
         <ul class="projectItems">
             <% for(let i = 0; i < project.length; i++){ %>
                 <li class="item">
-                    
-                        <span class=""><%= project[i].projectName %></span>
-                    
-                        <span><%= project[i].projectName %> : </span>
-                        <span><%= project[i].projectDescription %> </span>
-                        <span><%= project[i].projectLink  %></span>
-                        <button class="edit">Edit</button>
+                        <span id="projectName"><%= project[i].projectName %> : </span>
+                        <span id="projectDescription"><%= project[i].projectDescription %> </span>
+                        <span id="projectLink"><%= project[i].projectLink  %></span>
+                        
                         <button class="delete">Delete</button>
                 </li>
             <% } %> 

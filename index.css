@@ -1,27 +1,48 @@
 html{
     font: small-caps lighter 24px/1 sans-serif;
+    background-color: black;
+    color: rgb(255, 255, 255);
 }
 
 h1{
     background-color: black;
     color: white;
-    text-align:center;
+    /* text-align:center; */
     border-width: 1px;
     border-style: solid;
     /* border-radius: 0%; */
     /* margin: 10px; */
     padding: 20px;
-    margin-top: -10px;
-    margin: -10px -20px 20px -20px; 
+    padding-left: 30px;
+    margin: -10px -90px 20px -30px; 
     font: small-caps lighter 24px/1 sans-serif;
 }
 
 form{
-    flex-direction: column;
+    text-align: right;
+}
+
+.formSpan{
+    padding: 10px; 
+}
+
+#projectName{
+    /* padding: -50px 20px 20px -10px; */
+    margin: -90px 20px 20px -90px;
+}
+
+span{
+    /* flex-direction: column; */
+    display: block;
+}
+
+.delete{
+    /* margin: -90px -90px 20px 20px; */
+    text-align: left;
 }
 
 li{
-    text-align:center;
+    text-align: left;
     border-width: 1px;
     border-style: solid;
     border-radius: 0%;
@@ -33,5 +54,17 @@ li{
 
 ul{
     list-style-type: none;
-    margin: 30px -40px 20px -30px; 
+    margin: 30px -90px 20px -30px; 
+}
+
+button{
+    color: rgb(255, 255, 255);
+    background-color: red;
+    border-radius: 8px;
+}
+
+#add{
+    color: rgb(255, 255, 255);
+    background-color: rgb(35, 211, 53);
+    border-radius: 8px;
 }
