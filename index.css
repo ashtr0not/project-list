@@ -26,7 +26,7 @@ form{
     padding: 10px; 
 }
 
-#projectName{
+#projectNameS{
     /* padding: -50px 20px 20px -10px; */
     margin: -90px 20px 20px -90px;
 }
@@ -36,9 +36,10 @@ span{
     display: block;
 }
 
-.delete{
+#delete{
     /* margin: -90px -90px 20px 20px; */
     text-align: left;
+
 }
 
 li{
@@ -61,10 +62,17 @@ button{
     color: rgb(255, 255, 255);
     background-color: red;
     border-radius: 8px;
+    margin-left: 98%;
+    margin-top: -150px;
 }
 
 #add{
     color: rgb(255, 255, 255);
     background-color: rgb(35, 211, 53);
     border-radius: 8px;
+}
+
+#projectDescription{
+    /* padding: 30%; */
+    padding-left: 250px;
 }
