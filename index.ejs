@@ -15,6 +15,8 @@
     <body>
         <h1>Project List: </h1>
 
+        <!-- Form to add projects to -->
+
         <form action="addProject" method="POST">
             <span class="formSpan"><label for="projectName">Project Name: </label></span>
             <input type="text" placeholder="Project" name="projectName">
@@ -26,15 +28,25 @@
             <span class="formSpan"><input type="text" placeholder="" name="projectLink"></span>
             <input id="add" type="submit" value="Add Project">
         </form>
-        <!-- YOU ARE ADDING CLASSES TO THE SPAN TO STOP THE PROJECTNAME DUPLICATING -->
+        
+        <!-- Section that projects would appear -->
+
         <ul class="projectItems">
             <% for(let i = 0; i < project.length; i++){ %>
                 <li class="item">
-                        <span id="projectName"><%= project[i].projectName %> : </span>
+                        <span id="projectNameS"><%= project[i].projectName %> : </span>
                         <span id="projectDescription"><%= project[i].projectDescription %> </span>
                         <span id="projectLink"><%= project[i].projectLink  %></span>
                         
-                        <button class="delete">Delete</button>
+                        <label for="status">Project Status: </label>
+                        <select name="status" id="status">
+                            <option value="">Choose Status</option>
+                            <option value="red">Not Started</option>
+                            <option value="yellow">In Progress</option>
+                            <option value="green">Completed</option>
+                        </select>
+
+                        <button id="delete">Delete!</button>
                 </li>
             <% } %> 
 
