@@ -35,15 +35,25 @@ app.get('/', (request,response) => {
 
 //POST Request
 app.post('/addProject', (request,response) => {
-    db.collection('projects').insertOne({projectName: request.body.projectName, projectDescription: request.body.projectDescription, complete: false, projectLink: request.body.projectLink })
+    db.collection('projects').insertOne({projectName: request.body.projectName, projectDescription: request.body.projectDescription, projectLink: request.body.projectLink, status: ""})
     .then(result => {
         console.log('Project Added')
         response.redirect('/') 
     })
 })
-//PUT Request
-app.put('/editProject', (request,response) => {
-    db.collection('projects').updateOne({})
+//PUT Request (Drop-Down arrow for Status Updates which will change the block color)
+app.put('/updateProjectStatus', (request,response) => {
+    const { projectName, color } = request.body
+    db.collection('projects').updateOne(
+        { projectName },
+        { $set: { color } }
+        )
+    .then(result => {
+        console.log('Oh yea')
+        response.json('I am working but not 100% yet')
+    })
+    .catch(error => console.error(error))
+    // console.log("Route is good!!")
 })
 
 //DELETE Request 
