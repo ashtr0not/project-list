@@ -42,23 +42,23 @@ app.post('/addProject', (request,response) => {
     })
 })
 //PUT Request (Drop-Down arrow for Status Updates which will change the block color)
-app.put('/updateProjectStatus', (request,response) => {
-    const { projectName, color } = request.body
+app.put('/updateProjectStatus', (request, response) => {
+    const { projectName, color, status } = request.body
     db.collection('projects').updateOne(
         { projectName },
-        { $set: { color } }
-        )
+        { $set: { color, status } }
+    )
     .then(result => {
-        console.log('Oh yea')
-        response.json('I am working but not 100% yet')
+        console.log('Project status updated')
+        response.json('Status updated')
     })
     .catch(error => console.error(error))
-    // console.log("Route is good!!")
 })
 
 //DELETE Request 
 app.delete('/deleteProject', (request,response) => {
-    db.collection('projects').deleteOne({projectName: request.body.projectName})
+    db.collection('projects').deleteOne({
+        projectName: request.body.projectName})
     .then(result => {
         console.log('Project Deleted')
         response.json('Project Deleted')

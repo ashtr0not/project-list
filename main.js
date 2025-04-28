@@ -1,7 +1,7 @@
 const deleteText = document.querySelectorAll('.del')
 const statusColor = document.querySelectorAll('.status')
-// let item = document.querySelector('.item')
 
+//Event Listeners 
 Array.from(deleteText).forEach((element) => {
     element.addEventListener('click', deleteProject)
 })
@@ -10,83 +10,90 @@ Array.from(statusColor).forEach((element) => {
     element.addEventListener('change', statusChange)
 })
 
-async function statusChange(element){
-    // let color = element.target.value
-    let item = document.querySelector('.item')
-    // const parent = this.parentNode
-    // const proj = parent.querySelector('#projectName').innerText.replace(' :', '')
-    // const descript = parent.querySelector('#projectDescription').innerText
-    // const url = parent.querySelector('#projectLink').innerText
-    // console.log("select changed list to color:", color)
+//This calls the function once the page reloads to help keep colors after status change 
+setInitialColors()
 
-    const color = this.value;
-    const li = this.closest('.item');
-    item.style.backgroundColor = color;
+async function statusChange() {
+    const color = this.value
+    const li = this.closest('li')
+    const proj = li.querySelector('.projectName').innerText.replace(' :', '')
 
-    const proj = li.querySelector('#projectName').innerText.replace(' :', '');
+    // Map colors to status words
+    let status = ''
 
-    // if(color !== ""){
-    //     item.style.backgroundColor = color
-    //     item.style.color = 'black'
-    // }else{
-    //     item.style.backgroundColor = 'black'
-    //     item.style.color = 'black'
-    // }
-    try{
+    if (status === 'Not Started') color = 'red'
+    if (status === 'In Progress') color = 'yellow'
+    if (status === 'Completed') color = 'green'
+
+
+    li.style.backgroundColor = color
+    if (color === 'yellow') {
+        li.style.color = 'black'
+        li.style.borderColor = 'white'
+    } else {
+        li.style.color = 'white'
+    }
+
+    try {
         const response = await fetch('updateProjectStatus', {
-            method: 'put',
-            headers: {'Content-Type' : 'application/json'},
-            // body: JSON.stringify({
-            //     'projectName' : proj,
-            //     'description' : descript,
-            //     'projectLink' : url,
-            //     'status' : color
-            // })
-            body: JSON.stringify({ projectName: proj, color })
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ projectName: proj, color, status })
         })
         const data = await response.json()
         console.log(data)
-        location.reload()
-    }catch(err){
-        console.log(err)
+        // location.reload() // optional
+    } catch (err) {
+        console.error(err)
     }
 }
-//THIS CODE WORKS BUT IT GOES AWAY AFTER THE REFRESH
-// statusColor.addEventListener('change', (element) => {
-//     console.log("select changed.", element.target.value)
-//     let color = element.target.value
-//     if(color !==""){
-//         item.style.backgroundColor = color
-//         item.style.color = 'black'
-//     }else{
-//         item.style.backgroundColor = 'black'
-//         item.style.color = 'white'
-//     }
-// })
 
 
+async function deleteProject() {
+    const li = this.closest('li')
+    const proj = li.querySelector('.projectName').innerText.replace(' :', '')
 
-async function deleteProject(){
-    const parent = this.parentNode
-    const proj = parent.querySelector('#projectName').innerText.replace(' :', '')
-    const descript = parent.querySelector('#projectDescription').innerText
-    const url = parent.querySelector('#projectLink').innerText
-    try{
-        const response = await fetch('deleteProject',{
-            method: 'delete',
-            headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify({
-                'projectName' : proj,
-                'projectDescription' : descript,
-                'projectLink' : url
-            })
+    try {
+        const response = await fetch('deleteProject', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ projectName: proj })
         })
         const data = await response.json()
         console.log(data)
-        location.reload()
-    }catch(err){
-        console.log(err)
+
+        //Fade out the deleted project instead of reload
+        li.style.transition = 'opacity 0.5s ease' //transition
+        li.style.opacity = 0
+
+        // After fading out, remove from the DOM
+        setTimeout(() => {
+            li.remove()
+        }, 500) // matches the transition time
+
+    } catch (err) {
+        console.error(err)
     }
+}
+
+function setInitialColors() {
+    const items = document.querySelectorAll('li')
+
+    items.forEach(li => {
+        const statusSelect = li.querySelector('.status')
+        const selectedColor = statusSelect.value
+
+        if (selectedColor) {
+            li.style.backgroundColor = selectedColor
+
+            if (selectedColor === 'yellow') {
+                li.style.color = 'black'
+                li.style.borderColor = 'white'
+            } else {
+                li.style.color = 'white'
+            }
+        }
+    })
 }
 
 

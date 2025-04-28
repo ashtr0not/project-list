@@ -19,13 +19,14 @@
 
         <form action="addProject" method="POST">
             <span class="formSpan"><label for="projectName">Project Name: </label></span>
-            <input type="text" placeholder="Project" name="projectName">
+            <span class="formSpan"><input type="text" placeholder="Project" name="projectName" ></span>
 
             <span class="formSpan"><label for="projectDescription">Description: </label></span>
-            <textarea name="projectDescription" id="" cols="30" rows="5" ></textarea>
+            <span class="formSpan"><textarea name="projectDescription" cols="30" rows="5" ></textarea></span>
 
-            <span class="formSpan"><label for="projectDescription">Project Link: </label></span>
-            <span class="formSpan"><input type="text" placeholder="" name="projectLink"></span>
+            <span class="formSpan"><label for="projectLink">Project Link: </label></span>
+            <span class="formSpan"><input type="text" placeholder="" name="projectLink" ></span>
+
             <input id="add" type="submit" value="Add Project">
         </form>
         
@@ -33,20 +34,23 @@
 
         <ul class="projectItems">
             <% for(let i = 0; i < project.length; i++){ %>
-                <li class="item">
-                        <span id="projectNameS"><%= project[i].projectName %> : </span>
-                        <span id="projectDescription"><%= project[i].projectDescription %> </span>
-                        <span id="projectLink"><%= project[i].projectLink  %></span>
+                <li>
+                    <div class="item">
+                        <span class="projectName"><%= project[i].projectName %> : </span>
                         
-                        <label for="status">Project Status: </label>
-                        <select name="status" id="status">
+                        <label for="status" class="item">Project Status: </label>
+                        <select name="status" class="status">
                             <option value="">Choose Status</option>
-                            <option value="red">Not Started</option>
-                            <option value="yellow">In Progress</option>
-                            <option value="green">Completed</option>
+                            <option value="red" <%= project[i].color === 'red' ? 'selected' : '' %>>Not Started</option>
+                            <option value="yellow" <%= project[i].color === 'yellow' ? 'selected' : '' %>>In Progress</option>
+                            <option value="green" <%= project[i].color === 'green' ? 'selected' : '' %>>Completed</option>
                         </select>
+                        
+                        <span class="projectLink"><%= project[i].projectLink  %></span>
+                        <span class="projectDescription"><%= project[i].projectDescription %> </span>
 
-                        <button id="delete">Delete!</button>
+                        <button class="del">Delete</button>
+                    </div>
                 </li>
             <% } %> 
 
