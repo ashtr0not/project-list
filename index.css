@@ -1,8 +1,15 @@
+/* Full Document */
 html{
     font: small-caps lighter 24px/1 sans-serif;
     background-color: black;
     color: rgb(255, 255, 255);
 }
+
+span{
+    display: block;
+}
+
+/* Header Section */
 
 h1{
     background-color: black;
@@ -15,31 +22,41 @@ h1{
     padding: 20px;
     padding-left: 30px;
     margin: -10px -90px 20px -30px; 
-    font: small-caps lighter 24px/1 sans-serif;
+    /* font: small-caps lighter 24px/1 sans-serif; */
+    font-weight: lighter;
 }
 
+/* Form Section */
+
 form{
+    /* margin-left: 80%; */
+    margin-right: .2%;
     text-align: right;
+    border: none;
 }
 
 .formSpan{
     padding: 10px; 
+    border: none;
+    /* margin-left: 10px; */
 }
 
-#projectNameS{
-    /* padding: -50px 20px 20px -10px; */
-    margin: -90px 20px 20px -90px;
+#add{
+    color: rgb(255, 255, 255);
+    background-color: green;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    margin-right: 11px;
+    margin-top: 10px;
+    box-shadow: 0 8px 16px 0 rgba(131, 131, 131, 0.2), 0 6px 20px 0 rgba(163, 162, 162, 0.19);
 }
 
-span{
-    /* flex-direction: column; */
-    display: block;
-}
+/* Project List Section */
 
-#delete{
-    /* margin: -90px -90px 20px 20px; */
-    text-align: left;
-
+ul{
+    list-style-type: none;
+    margin: 30px -90px 20px -50px; 
 }
 
 li{
@@ -49,30 +66,55 @@ li{
     border-radius: 0%;
     /* margin: 10px; */
     padding: 100px;
+    padding-top: 10px;
     position: relative;
-    left: -25px;
 }
 
-ul{
-    list-style-type: none;
-    margin: 30px -90px 20px -30px; 
+.item{
+    margin-left: -85px;
 }
 
-button{
-    color: rgb(255, 255, 255);
-    background-color: red;
+.projectName{
+    font-size: xx-large;
+}
+
+.statusSection{
+    /* margin-left: 94%; */
+    margin-top: -30px;
+    margin-right: .2%;
+    text-align: right;
+}
+
+select{
+    border: none;
     border-radius: 8px;
-    margin-left: 98%;
-    margin-top: -150px;
+    padding: 3px;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0, 0.19); */
 }
 
-#add{
+
+.del{
     color: rgb(255, 255, 255);
-    background-color: rgb(35, 211, 53);
+    background-color: rgb(149, 1, 1);
     border-radius: 8px;
+    border: none;
+    padding: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0, 0.2), 0 6px 20px 0 rgba(0,0,0, 0.19);
+    margin-top: 1%;
+    margin-left: 96%;
+    /* margin-right: 2000px; */
+    /* margin-left: 1715px; */
+    text-align: right;
+    /* position: absolute; */
 }
 
-#projectDescription{
-    /* padding: 30%; */
-    padding-left: 250px;
+.projectDescription{
+    text-align: left;
+    width: 60%;
+    padding-top: 30px;
+    padding-bottom: -20px;
 }
+
+
+
+
